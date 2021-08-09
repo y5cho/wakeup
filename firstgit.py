@@ -8,15 +8,28 @@ for student in range(start, end):
     absent.append(student)
 '''
 class Student:
-    def __init__(self, name, status):
+    def __init__(self, name, mood, status):
         self.name = name 
         self.status = status 
+        self.mood = mood
         if self.status != "good":
             absent.append(self.name)
             print("{} is not coming to school today due to {}".format(self.name, status))
+        else:
+            print("{} is here".format(self.name))
 
-student1 = Student("Kim", "illness")
-print(absent)
+student1 = Student("Kim", "tired", "illness")
+
+class Math_Student(Student):
+    def __init__(self, name):
+        Student.__init__(self, name, "wonderous", "good")
+
+class Sports_Student(Student):
+    def __init__(self, name):
+        Student.__init__(self, name, "hyped", "excused")
+
+soccer_player = Sports_Student("Messi")
+math_student = Math_Student("Tao")
 '''
 vape = [randrange(0,15)]
 for student in range(1,11):
