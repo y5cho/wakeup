@@ -1,7 +1,6 @@
 from random import randrange
 import random 
-start = randrange(1,5)
-end = randrange(5,11)
+
 students = []
 
 '''
@@ -14,14 +13,22 @@ class Student:
         self.status = status 
         self.mood = mood
         if self.status != "good":
-            print("{} is not coming to school today for being {}".format(self.name, status))
+            print("{} is not coming to school today for being {}".format(name, status))
         else:
-            print("{} is here".format(self.name))
+            print("{} is here".format(name))
 
 class Math_Student(Student):
     def __init__(self, name):
         Student.__init__(self, name, "wonderous", "good")
         students.append(self)
+    
+    def taking_midterm(self, study_hours):
+        luck = randrange(1,21)
+        score = float(12.5 * study_hours) + luck
+        if score > 100:
+            score = 100
+        print("{}'s score on the midterm is {}".format(self.name, score))
+
 
 class Sports_Student(Student):
     def __init__(self, name):
@@ -38,21 +45,11 @@ for i in students:
     if i == vape:
         print("student {}, follow me to the main office".format(i.name))
 
+ms_2.taking_midterm(6)        
 
 
 
 
-'''
-vape = [randrange(0,15)]
-for student in range(1,11):
-    if student in absent:
-        continue 
-    elif student in vape:
-        print("{}th student, follow me to the main office".format(student))
-        break
-    print("{}th student is here".format(student))
-
-'''
 
 
 
