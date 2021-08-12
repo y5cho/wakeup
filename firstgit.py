@@ -40,16 +40,23 @@ def midterm_result():
 
 def class_average():
     scores = 0
-    average = 0 
     for key in score_report:
         x = score_report.get(key)
         scores = scores + x
-    print("the class average is: ", round(scores / (len(key)-3), 3))
+    print("the class average is: ", round(scores / len(score_report), 3))
 
 def report_bad():
+    vape = random.choice(students)
     for i in students:
         if i == vape:
             print("student {}, follow me to the main office".format(i.name))
+
+def report_good():
+    all_scores = score_report.values()
+    max_score = max(all_scores)
+    highest_scorer = max(score_report, key = score_report.get) 
+    print("congratulations! {} got the highest score of".format(highest_scorer), max_score)      
+
 #----------------------------------------------------------------#
 soccer_player = Sports_Student("Messi")
 math_student = Math_Student("Tao")
@@ -57,7 +64,8 @@ ms_2 = Math_Student("Euler")
 football_player = Sports_Student("Metcalf")
 midterm_result()
 class_average()
-vape = random.choice(students)
+report_bad()
+report_good()
 #----------------------------------------------------------------#
 
 
