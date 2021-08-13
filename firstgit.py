@@ -1,8 +1,12 @@
 from random import randrange
 import random 
+import csv
 #----------------------------------------------------------------#
 students = []
 score_report = {}
+filename = "students.csv"
+f = open(filename, "w", encoding="utf8", newline="")
+writer = csv.writer(f)
 #----------------------------------------------------------------#
 class Student:
     def __init__(self, name, mood, status):
@@ -55,7 +59,12 @@ def report_good():
     all_scores = score_report.values()
     max_score = max(all_scores)
     highest_scorer = max(score_report, key = score_report.get) 
-    print("congratulations! {} got the highest score of".format(highest_scorer), max_score)      
+    print("Congratulations! {} got the highest score of".format(highest_scorer), max_score)      
+
+
+
+
+
 
 #----------------------------------------------------------------#
 soccer_player = Sports_Student("Messi")
@@ -67,7 +76,10 @@ class_average()
 report_bad()
 report_good()
 #----------------------------------------------------------------#
-
+key_list = list(score_report.keys())
+val_list = list(score_report.values())
+print(key_list)
+print(val_list)
 
             
 
