@@ -1,12 +1,11 @@
 from random import randrange
 import random 
 import csv
+from typing import final
 #----------------------------------------------------------------#
 students = []
-score_report = {}
-filename = "students.csv"
-f = open(filename, "w", encoding="utf8", newline="")
-writer = csv.writer(f)
+midterm_report = {}
+final_report = {}
 #----------------------------------------------------------------#
 class Student:
     def __init__(self, name, mood, status):
@@ -17,13 +16,13 @@ class Student:
             print("{} is not coming to school today for being {}".format(name, status))
         else:
             print("{} is here".format(name))
+        print("-"*50)
     
-    def taking_midterm(self, study_hours):
+    def testing(self, study_hours):
         luck = randrange(1,21)
         score = float(12.5 * study_hours) + luck
         if score > 100:
             score = 100
-        print("{}'s score on the midterm is {}".format(self.name, score))
         return score
 
 class Math_Student(Student):
@@ -38,16 +37,34 @@ class Sports_Student(Student):
 
 def midterm_result():
     for student in students:
-        student_score = student.taking_midterm(randrange(1,10))
-        score_report[student.name] = float(student_score)
-        print(score_report)
+        student_score = student.testing(randrange(1,10))
+        midterm_report[student.name] = float(student_score)
+        print("{}'s score on the midterm is {}".format(student.name, student_score))
+    print("-"*50)
+
+
+def final_result():
+    for student in students:
+        final_score = student.testing(randrange(1,10))
+        final_report[student.name] = float(final_score)
+        print("{}'s score on the final is {}".format(student.name, final_score))
+    print("-"*50)
+
 
 def class_average():
-    scores = 0
-    for key in score_report:
-        x = score_report.get(key)
-        scores = scores + x
-    print("the class average is: ", round(scores / len(score_report), 3))
+    midterm_scores = 0
+    for key in midterm_report:
+        x = midterm_report.get(key)
+        midterm_scores = midterm_scores + x
+    print("The class average on the midterm is: ", round(midterm_scores / len(midterm_report), 3))
+    final_scores = 0
+    for key in final_report:
+        x = final_report.get(key)
+        final_scores = final_scores + x
+    print("The class average on the final is: ", round(final_scores / len(final_report), 3))
+        
+
+
 
 def report_bad():
     vape = random.choice(students)
@@ -56,10 +73,10 @@ def report_bad():
             print("student {}, follow me to the main office".format(i.name))
 
 def report_good():
-    all_scores = score_report.values()
+    all_scores = midterm_report.values()
     max_score = max(all_scores)
-    highest_scorer = max(score_report, key = score_report.get) 
-    print("Congratulations! {} got the highest score of".format(highest_scorer), max_score)      
+    highest_scorer = max(midterm_report, key = midterm_report.get) 
+    print("Congratulations! {} got the highest score of".format(highest_scorer), max_score, " on the midterm")      
 
 
 
@@ -72,15 +89,23 @@ math_student = Math_Student("Tao")
 ms_2 = Math_Student("Euler")
 football_player = Sports_Student("Metcalf")
 midterm_result()
+final_result()
 class_average()
+'''
 report_bad()
 report_good()
+'''
 #----------------------------------------------------------------#
-key_list = list(score_report.keys())
-val_list = list(score_report.values())
-print(key_list)
-print(val_list)
+key_list = list(midterm_report.keys())
+val_list = list(midterm_report.values())
+print(" ".join(key_list))
 
+title = "name   score".split("\t") 
+
+with open('students.csv', 'w') as f:
+    writer = csv.writer(f)
+    writer.writerow(title)
+    writer.writerows(zip(key_list , val_list))
             
 
 
