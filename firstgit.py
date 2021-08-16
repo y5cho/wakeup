@@ -42,7 +42,6 @@ def midterm_result():
         print("{}'s score on the midterm is {}".format(student.name, student_score))
     print("-"*50)
 
-
 def final_result():
     for student in students:
         final_score = student.testing(randrange(1,10))
@@ -62,9 +61,19 @@ def class_average():
         x = final_report.get(key)
         final_scores = final_scores + x
     print("The class average on the final is: ", round(final_scores / len(final_report), 3))
-        
 
-
+def class_grade():
+    for student in midterm_report:
+        m1 = midterm_report.get(student)
+        for key in final_report:
+            f1 = final_report.get(key)
+        if int(m1 + f1) >= 180:
+            class_grade = "A"
+        elif int(m1 + f1) < 180 and int(m1 + f1) >= 160:
+            class_grade = "B"
+        else:
+            class_grade = "C"
+        print("{}'s final grade in the class: ".format(student), class_grade)
 
 def report_bad():
     vape = random.choice(students)
@@ -91,14 +100,11 @@ football_player = Sports_Student("Metcalf")
 midterm_result()
 final_result()
 class_average()
-'''
-report_bad()
-report_good()
-'''
+class_grade()
 #----------------------------------------------------------------#
 key_list = list(midterm_report.keys())
 val_list = list(midterm_report.values())
-print(" ".join(key_list))
+#print(" ".join(key_list))
 
 title = "name   score".split("\t") 
 
