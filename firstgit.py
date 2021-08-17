@@ -49,7 +49,6 @@ def final_result():
         print("{}'s score on the final is {}".format(student.name, final_score))
     print("-"*50)
 
-
 def class_average():
     midterm_scores = 0
     for key in midterm_report:
