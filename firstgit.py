@@ -103,14 +103,15 @@ class_grade()
 #----------------------------------------------------------------#
 key_list = list(midterm_report.keys())
 val_list = list(midterm_report.values())
+val_list_final = list(final_report.values())
 #print(" ".join(key_list))
 
-title = "name   score".split("\t") 
+title = "name   score1  score2".split("\t") 
 
 with open('students.csv', 'w') as f:
     writer = csv.writer(f)
     writer.writerow(title)
-    writer.writerows(zip(key_list , val_list))
+    writer.writerows(zip(key_list , val_list, val_list_final))
             
 
 

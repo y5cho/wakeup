@@ -17,6 +17,7 @@ ws.append(["number", "english", "math"])
 for i in range(1,11):
     ws.append([i, randint(0, 100), randint(0,100)])
 
+'''
 col_B = ws["B"]
 for cell in col_B:
     print(cell.value)
@@ -36,6 +37,17 @@ for rows in row_range:
         print(row.coordinate, end=" ")
         print(row.value, end=" ")
     print()
+'''
+#all rows 
+for row in tuple(ws.rows):
+    print(row[2].value)
+
+for row in ws.iter_rows(min_row=1, max_row=5, min_col=2, max_col=3):
+    print(row[0].value, row[1].value)
+
+
+#all columns 
+tuple(ws.columns)
 #------------------------------
 ws2["A1"] = "Test"
 print(ws2["A1"].value)  #= ws2.cell(row=1, column=1).value
