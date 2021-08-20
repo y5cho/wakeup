@@ -50,12 +50,15 @@ for row in ws.iter_rows(min_row=1, max_row=5, min_col=2, max_col=3):
 tuple(ws.columns)
 #------------------------------
 ws2["A1"] = "Test"
-print(ws2["A1"].value)  #= ws2.cell(row=1, column=1).value
+#print(ws2["A1"].value)  #= ws2.cell(row=1, column=1).value
 index = 1
 for x in range(1,11):
     for y in range(1,11):
         ws2.cell(row=x, column=y, value=index)
         index = index + 1
+
+for row in ws2.iter_rows(min_row = 1, max_row=5, min_col=1, max_col=2):
+    print(row[0].value)
 
 #-----------------sheet-------------
 wb.save("sample.xlsx")
