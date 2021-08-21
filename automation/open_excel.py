@@ -1,12 +1,14 @@
 from openpyxl import load_workbook
+from random import *
 
-wb = load_workbook("sample.xlsx")
-ws = wb.active
-print(wb.sheetnames)
-ws2 = wb["sheet2"]
+from openpyxl.workbook.workbook import Workbook
 
-for x in range(1, ws2.max_row +1):
-    for y in range(1, ws2.max_column +1):
-        print(ws2.cell(row=x, column=y).value, end=" ")
-    print()
+wb = load_workbook("Book1.xlsx")
+sheets = wb.sheetnames
+Sheet1 = wb[sheets[0]]
+Sheet2 = wb.create_sheet("Sheet2")
+Sheet1.cell(row = 2, column = 4).value = 5 
 
+
+
+wb.save("Book1.xlsx")
