@@ -226,6 +226,15 @@ h6 {font-size: 16px;}
     left: -5px;
 }
 
+.about-wrapper{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+#skills{
+    display: flex;
+    justify-content: space-evenly;
+}
 
 
 @media screen and (max-width: 1200px){
@@ -245,5 +254,10 @@ h6 {font-size: 16px;}
 
     .right-column{
         justify-content: center;
+        grid-area: right-column;
+        align-content: center;
+
+        padding-top: 50px;
+        padding-bottom: 50px;
     }
 }
