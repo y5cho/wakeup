@@ -26,7 +26,7 @@ html{
 }
 .navbar.sticky{
     padding: 15px 0;
-    background: crimson;
+    background: #ccafb3;
 }
 .navbar .max-width{
     display: flex;
@@ -34,12 +34,12 @@ html{
     justify-content: space-between
 }
 .navbar .logo a{
-    color: rgb(23, 136, 0);
+    color: rgb(0, 0, 0);
     font-size: 35px;
     font-weight: 600;
 }
 .navbar .logo a span{
-    color: crimson;
+    color: rgb(252, 174, 7);
     transition: all 0.3s ease;
 }
 .navbar.sticky .logo a span{
@@ -51,7 +51,7 @@ html{
 }
 .navbar .menu li a{
     display: block;
-    color: rgb(23, 136, 0);
+    color: crimson;
     font-size: 18px;
     font-weight: 500;
     margin-left: 25px;
