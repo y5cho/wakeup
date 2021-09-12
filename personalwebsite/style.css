@@ -100,7 +100,7 @@ html{
 .home{
     display: flex;
     height: 100vh;
-    background: url("/Users/yeonilcho/Desktop/Github/wakeup/images/music.jpg") no-repeat center;
+    background: url("music.jpg") no-repeat center;
     background-size: 1400px 700px;
     color: #fff;
     min-height: 500px; 
